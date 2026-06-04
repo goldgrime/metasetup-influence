@@ -3,8 +3,8 @@ import './globals.css';
 
 // Final public URL of this site. Set NEXT_PUBLIC_SITE_URL in your host (e.g.
 // Vercel → Project → Settings → Environment Variables) to the live subdomain,
-// e.g. https://metasetup.artistinfluence.com, then redeploy. This only affects
-// link-preview (OG) image/URL resolution — the page works regardless.
+// e.g. https://ads.artistinfluence.com, then redeploy. This only affects
+// link-preview (OG) image/URL resolution, the page works regardless.
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://metasetupinfluence.vercel.app';
 
 export const metadata: Metadata = {
