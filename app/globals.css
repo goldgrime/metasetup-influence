@@ -1,4 +1,5 @@
 :root {
+  --cache-bust: 20260605a; /* harmless; changes the compiled CSS filename hash so browsers/CDN fetch a fresh copy (clears stale cache from the domain's 404 setup window) */
   --ai-bg: #0D0A06;
   --ai-bg2: #15110B;
   --ai-bg3: #1F1810;
