@@ -1,7 +1,6 @@
-'use client';
-
-import { useEffect, useRef } from 'react';
-
+// Pure server-rendered static page: no client JavaScript at all, so nothing can
+// break or hide content on networks/devices where /_next chunks are slow or
+// blocked. Content is always visible (the .reveal scroll animation is dropped).
 type Brand = 'meta' | 'facebook' | 'instagram';
 
 function BrandMark({ brand }: { brand: Brand }) {
@@ -294,29 +293,8 @@ function PathBreadcrumb({ parts }: { parts: NonNullable<typeof STEPS[number]['pa
 }
 
 export default function Page() {
-  const rootRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    const root = rootRef.current;
-    if (!root || typeof IntersectionObserver === 'undefined') return;
-    const targets = root.querySelectorAll<HTMLElement>('.reveal');
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const e of entries) {
-          if (e.isIntersecting) {
-            e.target.classList.add('revealed');
-            io.unobserve(e.target);
-          }
-        }
-      },
-      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
-    );
-    targets.forEach((t) => io.observe(t));
-    return () => io.disconnect();
-  }, []);
-
   return (
-    <div ref={rootRef}>
+    <div>
       {/* NAV */}
       <nav className="nav">
         <div className="nav-inner">
